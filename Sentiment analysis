@@ -1,0 +1,68 @@
+tweets = [
+    "Wow, what a great day today!! #sunshine",
+    "I feel sad about the things going on around us. #covid19",
+    "I'm really excited to learn Python with @JovianML #zerotopandas",
+    "This is a really nice song. #linkinpark",
+    "The python programming language is useful for data science",
+    "Why do bad things happen to me?",
+    "Apple announces the release of the new iPhone 12. Fans are excited.",
+    "Spent my day with family!! #happy",
+    "Check out my blog post on common string operations in Python. #zerotopandas",
+    "Freecodecamp has great coding tutorials. #skillup"
+]
+
+print("SENTIMENT ANALYSIS OF TWITTER")
+
+#Determining the total number of tweets
+total_number_tweets=len(tweets)
+print("\nTotal number of tweets:",total_number_tweets)
+happy_words = ['great', 'excited', 'happy', 'nice', 'wonderful', 'amazing', 'good', 'best']
+
+sad_words = ['sad', 'bad', 'tragic', 'unhappy', 'worst']
+sample_tweet = tweets[0]
+is_tweet_happy = False
+
+# Get a word from happy_words
+for word in happy_words:
+    # Check if the tweet contains the word
+    if word in sample_tweet:
+        # Word found! Mark the tweet as happy
+        is_tweet_happy = True
+
+#Determining the number of tweets that can be classified as happy tweets
+number_of_happy_tweets = 0
+
+for tweet in tweets:
+    for word in happy_words:
+        if word in tweet.lower():
+            number_of_happy_tweets += 1
+            break 
+print("Number of happy tweets:", number_of_happy_tweets)
+
+#Determining the number of tweets that can be classified as sad tweets
+number_of_sad_tweets = 0
+
+for tweet in tweets:
+    for word in sad_words:
+        if word in tweet.lower():
+            number_of_sad_tweets += 1
+            break  
+print("Number of sad tweets:", number_of_sad_tweets)
+
+#Determining the number of neutral tweets
+
+number_of_neutral_tweets = total_number_tweets-number_of_sad_tweets-number_of_happy_tweets
+
+print("Number of neutral tweets:",number_of_neutral_tweets)
+
+print("\nNow determining the fraction--")
+
+#What fraction of the total number of tweets are happy?
+
+happy_fraction = number_of_happy_tweets/total_number_tweets
+print("\nThe fraction of happy tweets is:", happy_fraction)
+
+#What fraction of the total number of tweets are sad?
+
+sad_fraction = number_of_sad_tweets/total_number_tweets
+print("The fraction of sad tweets is:", sad_fraction)
